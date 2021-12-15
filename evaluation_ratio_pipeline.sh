@@ -179,6 +179,34 @@ do
 CUDA_VISIBLE_DEVICES=$gpu python main.py \
     --my_model=dual_encoder_ranking \
     --do_train \
+    --dataset='["irc"]' \
+    --task=nlg --task_name=rs \
+    --example_type=turn \
+    --model_type=${model} \
+    --model_name_or_path=${bert_dir} \
+     --output_dir=${output_dir}/RS/IRC/ \
+    --batch_size=25 --eval_batch_size=100 \
+    --max_seq_length=256\
+    --fix_rand_seed \
+    $add1 $add2 $add3
+    
+CUDA_VISIBLE_DEVICES=$gpu python main.py \
+    --my_model=dual_encoder_ranking \
+    --do_train \
+    --dataset='["movie"]' \
+    --task=nlg --task_name=rs \
+    --example_type=turn \
+    --model_type=${model} \
+    --model_name_or_path=${bert_dir} \
+     --output_dir=${output_dir}/RS/MOVIE/ \
+    --batch_size=25 --eval_batch_size=100 \
+    --max_seq_length=256 \
+    --fix_rand_seed \
+    $add1 $add2 $add3
+
+CUDA_VISIBLE_DEVICES=$gpu python main.py \
+    --my_model=dual_encoder_ranking \
+    --do_train \
     --task=nlg \
     --task_name=rs \
     --example_type=turn \
@@ -225,6 +253,34 @@ CUDA_VISIBLE_DEVICES=$gpu python main.py \
 done
 for ratio in 0.1 
 do
+CUDA_VISIBLE_DEVICES=$gpu python main.py \
+    --my_model=dual_encoder_ranking \
+    --do_train \
+    --dataset='["irc"]' \
+    --task=nlg --task_name=rs \
+    --example_type=turn \
+    --model_type=${model} \
+    --model_name_or_path=${bert_dir} \
+     --output_dir=${output_dir}/RS/IRC/ \
+    --batch_size=25 --eval_batch_size=100 \
+    --max_seq_length=256\
+    --fix_rand_seed \
+    $add1 $add2 $add3
+    
+CUDA_VISIBLE_DEVICES=$gpu python main.py \
+    --my_model=dual_encoder_ranking \
+    --do_train \
+    --dataset='["movie"]' \
+    --task=nlg --task_name=rs \
+    --example_type=turn \
+    --model_type=${model} \
+    --model_name_or_path=${bert_dir} \
+     --output_dir=${output_dir}/RS/MOVIE/ \
+    --batch_size=25 --eval_batch_size=100 \
+    --max_seq_length=256 \
+    --fix_rand_seed \
+    $add1 $add2 $add3
+
 CUDA_VISIBLE_DEVICES=$gpu python main.py \
     --my_model=dual_encoder_ranking \
     --do_train \
