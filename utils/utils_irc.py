@@ -16,7 +16,7 @@ def read_langs_movie_dial(file_name, max_line = None):
         print("len dials", len(dials))
         
         cnt_lin = 1
-        for dial_count, dial_list in dials:
+        for dial_count, dial_list in enumerate(dials):
             dialog_history = []
             
             # sys_first_flag = 1 if (dial_list[0]["speaker"]=="[SYS]") else 0

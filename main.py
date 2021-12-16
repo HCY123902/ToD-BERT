@@ -65,7 +65,8 @@ if args["model_name_or_path"]:
 else:
     config = config_class()
 args["config"] = config
-args["num_labels"] = unified_meta["num_labels"]
+
+# args["num_labels"] = unified_meta["num_labels"]
 
     
 ## Training and Testing Loop
