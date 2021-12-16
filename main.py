@@ -171,10 +171,12 @@ if args["do_train"]:
                             logging.info("Ran out of patient, early stop...")  
                             break
 
-                        logging.info("Trn loss {:.4f}, Dev loss {:.4f}, Dev {} {:.4f}".format(train_loss/(i+1), 
+                        # Adjusted
+                        logging.info("Trn loss {:.4f}, Dev loss {:.4f}, Dev {} {:.4f}, Result: {}".format(train_loss/(i+1), 
                                                                                               dev_loss,
                                                                                               args["earlystop"],
-                                                                                              dev_acc))
+                                                                                              dev_acc, 
+                                                                                              results))
 
                 if cnt > args["patience"]: 
                     tb_writer.close()
