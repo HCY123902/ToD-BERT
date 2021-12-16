@@ -114,7 +114,7 @@ def read_langs_dial(file_name, label_dict, max_line = None):
     raise NotImplementedError
 
 
-def prepare_data_moive(args):
+def prepare_data_movie(args):
     example_type = args["example_type"]
     max_line = args["max_line"]
     
