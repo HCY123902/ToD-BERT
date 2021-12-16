@@ -16,7 +16,7 @@ def read_langs_movie_dial(file_name, max_line = None):
         print("len dials", len(dials))
         
         cnt_lin = 1
-        for dial_list in dials:
+        for dial_count, dial_list in dials:
             dialog_history = []
             
             # sys_first_flag = 1 if (dial_list[0]["speaker"]=="[SYS]") else 0
@@ -26,7 +26,10 @@ def read_langs_movie_dial(file_name, max_line = None):
             for ti, turn in enumerate(dial_list):
 
                 data_detail = get_input_example("turn")
-                data_detail["ID"] = turn["conv_id"]
+
+                # data_detail["ID"] = turn["conv_id"]
+                data_detail["ID"] = dial_count
+
                 data_detail["dialog_history"] = list(dialog_history)
                 
                 if sys_first_flag and ti % 2 == 1:
@@ -78,6 +81,7 @@ def read_langs_irc_dial(file_name, max_line = None):
             for ti, turn in enumerate(dial_list):
 
                 data_detail = get_input_example("dial")
+
                 #data_detail["ID"] = turn["conv_id"]
                 data_detail["ID"] = dial_count
 
