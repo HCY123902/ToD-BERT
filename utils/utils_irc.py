@@ -129,8 +129,8 @@ def prepare_data_movie(args):
     #file_label = '/export/home/dialog_datasets/universal_dialog_act/acts.txt'
     #label_dict = {line.replace("\n", ""):i for i, line in enumerate(open(file_label, "r").readlines())}
     
-    # _example_type = "dial" if "dial" in example_type else example_type
-    _example_type = "dial"
+    _example_type = "dial" if "dial" in example_type else example_type
+    # _example_type = "turn"
 
     pair_trn = globals()["read_langs_movie_{}".format(_example_type)](file_trn, max_line)
     pair_dev = globals()["read_langs_movie_{}".format(_example_type)](file_dev, max_line)
@@ -158,8 +158,8 @@ def prepare_data_irc(args):
     # file_label = '/export/home/dialog_datasets/universal_dialog_act/acts.txt'
     # label_dict = {line.replace("\n", ""):i for i, line in enumerate(open(file_label, "r").readlines())}
     
-    # _example_type = "dial" if "dial" in example_type else example_type
-    _example_type = "dial"
+    _example_type = "dial" if "dial" in example_type else example_type
+    # _example_type = "turn"
 
     pair_trn = globals()["read_langs_irc_{}".format(_example_type)](file_trn, max_line)
     pair_dev = globals()["read_langs_irc_{}".format(_example_type)](file_dev, max_line)
