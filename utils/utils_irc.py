@@ -4,7 +4,7 @@ import os
 
 from .utils_function import get_input_example
 
-def read_langs_movie_dial(file_name, max_line = None):
+def read_langs_movie_turn(file_name, max_line = None):
     print(("Reading from {} for read_langs_movie_dial".format(file_name)))
     
     data = []
@@ -55,7 +55,7 @@ def read_langs_movie_dial(file_name, max_line = None):
 
     return data
 
-def read_langs_irc_dial(file_name, max_line = None):
+def read_langs_irc_turn(file_name, max_line = None):
     print(("Reading from {} for read_langs_irc_turn".format(file_name)))
     
     data = []
