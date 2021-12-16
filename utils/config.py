@@ -110,7 +110,7 @@ parser.add_argument(
 parser.add_argument(
     '--max_line', help='maximum line for reading data (for quick testing)', required=False, default=None, type=int)
 parser.add_argument(
-    '--output_dir', help='', required=False, default="save/temp/", type=str)
+    '--output_dir', help='', required=False, default="./save/temp/", type=str)
 parser.add_argument(
     '--overwrite', action='store_true', help="")
 parser.add_argument(
