@@ -80,7 +80,7 @@ def read_langs_irc_turn(file_name, max_line = None):
             # Reading data
             for ti, turn in enumerate(dial_list):
 
-                data_detail = get_input_example("dial")
+                data_detail = get_input_example("turn")
 
                 #data_detail["ID"] = turn["conv_id"]
                 data_detail["ID"] = dial_count
@@ -152,8 +152,8 @@ def prepare_data_irc(args):
     max_line = args["max_line"]
     
     file_trn = os.path.join(args["data_path"], 'irc/train.txt')
-    file_dev = os.path.join(args["data_path"], 'irc/test.txt')
-    file_tst = os.path.join(args["data_path"], 'irc/valid.txt')
+    file_dev = os.path.join(args["data_path"], 'irc/valid.txt')
+    file_tst = os.path.join(args["data_path"], 'irc/test.txt')
     # file_label = os.path.join(args["data_path"], 'universal_dialog_act/sim_joint/labels.txt')
     # file_label = '/export/home/dialog_datasets/universal_dialog_act/acts.txt'
     # label_dict = {line.replace("\n", ""):i for i, line in enumerate(open(file_label, "r").readlines())}
