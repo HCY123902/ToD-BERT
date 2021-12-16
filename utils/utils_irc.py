@@ -4,8 +4,8 @@ import os
 
 from .utils_function import get_input_example
 
-def read_langs_movie_turn(file_name, max_line = None):
-    print(("Reading from {} for read_langs_movie_turn".format(file_name)))
+def read_langs_movie_dial(file_name, max_line = None):
+    print(("Reading from {} for read_langs_movie_dial".format(file_name)))
     
     data = []
     domain_counter = {} 
@@ -52,7 +52,7 @@ def read_langs_movie_turn(file_name, max_line = None):
 
     return data
 
-def read_langs_irc_turn(file_name, max_line = None):
+def read_langs_irc_dial(file_name, max_line = None):
     print(("Reading from {} for read_langs_irc_turn".format(file_name)))
     
     data = []
@@ -158,8 +158,8 @@ def prepare_data_irc(args):
     _example_type = "dial"
 
     pair_trn = globals()["read_langs_irc_{}".format(_example_type)](file_trn, max_line)
-    pair_dev = globals()["read_langs_{}".format(_example_type)](file_dev, max_line)
-    pair_tst = globals()["read_langs_{}".format(_example_type)](file_tst, max_line)
+    pair_dev = globals()["read_langs_irc_{}".format(_example_type)](file_dev, max_line)
+    pair_tst = globals()["read_langs_irc_{}".format(_example_type)](file_tst, max_line)
 
     print("Read {} pairs train from {}".format(len(pair_trn), file_trn))
     print("Read {} pairs valid from {}".format(len(pair_dev), file_dev))
