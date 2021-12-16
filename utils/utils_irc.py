@@ -17,6 +17,10 @@ def read_langs_movie_turn(file_name, max_line = None):
         
         cnt_lin = 1
         for dial_count, dial_list in enumerate(dials):
+            if dial_count >= 5000:
+                print("Retain the first 5000 dialogues")
+                break
+            
             dialog_history = []
             
             # sys_first_flag = 1 if (dial_list[0]["speaker"]=="[SYS]") else 0

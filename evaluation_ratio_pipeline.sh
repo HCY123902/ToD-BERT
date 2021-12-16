@@ -189,7 +189,7 @@ CUDA_VISIBLE_DEVICES=$gpu python main.py \
     --max_seq_length=256\
     --fix_rand_seed \
     --eval_by_step=200 \
-    --epoch=50 \
+    --epoch=30 \
     $add1 $add2 $add3
     
 CUDA_VISIBLE_DEVICES=$gpu python main.py \
@@ -205,7 +205,7 @@ CUDA_VISIBLE_DEVICES=$gpu python main.py \
     --max_seq_length=256 \
     --fix_rand_seed \
     --eval_by_step=200 \
-    --epoch=50 \
+    --epoch=30 \
     $add1 $add2 $add3
 
 # CUDA_VISIBLE_DEVICES=$gpu python main.py \
