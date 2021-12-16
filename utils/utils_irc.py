@@ -4,7 +4,7 @@ import os
 
 from .utils_function import get_input_example
 
-def read_langs_movie_turn(file_name, max_line = None):
+def read_langs_movie_turn(file_name, set_type, max_line = None):
     print(("Reading from {} for read_langs_movie_dial".format(file_name)))
     
     data = []
@@ -17,8 +17,14 @@ def read_langs_movie_turn(file_name, max_line = None):
         
         cnt_lin = 1
         for dial_count, dial_list in enumerate(dials):
-            if dial_count >= 5000:
+            if set_type == "train" and dial_count >= 3000:
                 print("Retain the first 5000 dialogues")
+                break
+            if set_type == "valid" and dial_count >= 200:
+                print("Retain the first 200 dialogues")
+                break
+            if set_type == "test" and dial_count >= 200:
+                print("Retain the first 200 dialogues")
                 break
             
             dialog_history = []
@@ -136,9 +142,9 @@ def prepare_data_movie(args):
     _example_type = "dial" if "dial" in example_type else example_type
     # _example_type = "turn"
 
-    pair_trn = globals()["read_langs_movie_{}".format(_example_type)](file_trn, max_line)
-    pair_dev = globals()["read_langs_movie_{}".format(_example_type)](file_dev, max_line)
-    pair_tst = globals()["read_langs_movie_{}".format(_example_type)](file_tst, max_line)
+    pair_trn = globals()["read_langs_movie_{}".format(_example_type)](file_trn, "train", max_line)
+    pair_dev = globals()["read_langs_movie_{}".format(_example_type)](file_dev, "valid", max_line)
+    pair_tst = globals()["read_langs_movie_{}".format(_example_type)](file_tst, "test", max_line)
 
     print("Read {} pairs train from {}".format(len(pair_trn), file_trn))
     print("Read {} pairs valid from {}".format(len(pair_dev), file_dev))
