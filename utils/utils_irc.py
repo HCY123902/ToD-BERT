@@ -17,7 +17,7 @@ def read_langs_movie_turn(file_name, set_type, max_line = None):
         
         cnt_lin = 1
         for dial_count, dial_list in enumerate(dials):
-            if set_type == "train" and dial_count >= 3000:
+            if set_type == "train" and dial_count >= 3500:
                 print("Retain the first 5000 dialogues")
                 break
             if set_type == "valid" and dial_count >= 200:
