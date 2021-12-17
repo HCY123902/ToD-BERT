@@ -169,9 +169,9 @@ if args["do_train"]:
                             cnt += 1
                             logging.info("[Info] Early stop count: {}/{}...".format(cnt, args["patience"]))
 
-                        if cnt > args["patience"]: 
-                            logging.info("Ran out of patient, early stop...")  
-                            break
+                        # if cnt > args["patience"]: 
+                        #     logging.info("Ran out of patient, early stop...")  
+                        #     break
 
                         # Adjusted
                         logging.info("Trn loss {:.4f}, Dev loss {:.4f}, Dev {} {:.4f}, Result: {}".format(train_loss/(i+1), 
