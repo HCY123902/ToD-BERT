@@ -180,9 +180,9 @@ if args["do_train"]:
                                                                                               dev_acc, 
                                                                                               results))
 
-                if cnt > args["patience"]: 
-                    tb_writer.close()
-                    break 
+                # if cnt > args["patience"]: 
+                #     tb_writer.close()
+                #     break 
                     
         except KeyboardInterrupt:
             logging.info("[Warning] Earlystop by KeyboardInterrupt")
