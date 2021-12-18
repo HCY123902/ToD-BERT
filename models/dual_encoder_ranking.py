@@ -13,6 +13,8 @@ import numpy as np
 
 from transformers import *
 
+# Added
+import operator
 
 class dual_encoder_ranking(nn.Module):
     def __init__(self, args): #, num_labels, device):
@@ -142,8 +144,47 @@ class dual_encoder_ranking(nn.Module):
         results = {"top-1": _recall_topk(preds, labels, 1), 
                    "top-3": _recall_topk(preds, labels, 3), 
                    "top-5": _recall_topk(preds, labels, 5), 
-                   "top-10": _recall_topk(preds, labels, 10)}
+                   "top-10": _recall_topk(preds, labels, 10),
+                   "mrr": self.mean_reciprocal_rank(preds, labels)}
         
         print(results)
         
         return results
+
+    # Added
+    def is_valid_query(self, label, preds):
+        num_pos = 0
+        num_neg = 0
+        for predicted_label in preds:
+            if label == predicted_label:
+                num_pos += 1
+            else:
+                num_neg += 1
+        if num_pos > 0 and num_neg > 0:
+            return True
+        else:
+            return False
+
+    # Added
+    def mean_reciprocal_rank(self, preds, labels):
+        num_query = 0
+        mrr = 0.0
+
+        preds = np.flip(preds, 1)
+
+        for li, label in enumerate(labels):
+            if not self.is_valid_query(label, preds[li]):
+                print("Encountered invalid query with label {} and prediction {}".format(label, preds[li]))
+                continue
+
+            num_query = num_query + 1
+            for i, predicted_label in enumerate(preds[li]):
+                if predicted_label == label:
+                    mrr = mrr + (1.0/(i + 1))
+                    break
+        
+        if num_query == 0:
+            return 0.0
+        else:
+            mrr = mrr/num_query
+            return mrr
